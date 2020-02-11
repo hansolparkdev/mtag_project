@@ -23,7 +23,7 @@
     "jquery-ui-dist": "^1.12.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
-    "mqtt": "^2.13.1",
+    "mqtt": "^2.15.0",
     "mysql": "^2.15.0",
     "nunjucks": "^3.0.1",
     "passport": "^0.4.0",
