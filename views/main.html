@@ -1,0 +1,66 @@
+<html>
+<head>
+	<title>MTag Monitoring Main</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/dataTable.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<script type="text/javascript" src = "/static/js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src = "/static/js/lib/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src = "/static/js/scripts/main.js"></script>
+</head>
+<body>
+	<div id = "header">
+		<div id = "area_header" class="area" style='height: 67px;'>
+			<div style="float: left;">
+				<h1><a href="/main">M-Tag 모니터링 시스템 v1.0</a></h1>
+			</div>
+			<div style="float: right;">
+				<a href="/help" target='_blank' style="float:left;line-height:70px;font-size: 17px; font-weight:700; text-decoration: none; color:white; margin-right:20px;">도움말</a>
+				<form method="POST" action="/login/logout" style="float:left">
+					<input type="submit" value="LOGOUT" class="log-out">
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id = "content">
+		<div id = "area_content" class="area">
+			<p><a href="/monitoring">#Onboard monitoring</a></p>
+			<table id = "viewer">
+				<thead>
+					<tr>
+						<th>DECK</th>
+						<th>Boarder</th>
+						<th>Passenger</th>
+						<th>Cargo</th>	
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<p><a href="/system/mtag_admin">#Tag Management</a></p>
+			<table id = "mtag_list">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Active</th>
+						<th>Emergency</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>	
+			<p><a href="/system/beacon_admin">#Beacon Management</a></p>
+			<div>
+				<table id = "beacon_list">
+					<thead>
+						<tr>
+							<th>DECK</th>
+							<th>Installed</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>	
+			</div>
+		</div>
+	</div>
+	<div id = "footer">
+	</div>
+</body>
+</html>

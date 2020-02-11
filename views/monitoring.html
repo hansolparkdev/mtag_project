@@ -1,0 +1,110 @@
+<html>
+<head>
+	<title>Monitoring</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/dataTable.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/monitoring.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/banner_alert.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css">
+	<!--<script type="text/javascript" src="/static/js/lib/jquery-1.12.4.js"></script>-->
+	<script type="text/javascript" src="/static/js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="/static/js/lib/jcanvas.min.js"></script>
+	<script type="text/javascript" src="/static/js/lib/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/static/js/scripts/monitoring.js"></script>
+	<script type="text/javascript" src="/static/js/scripts/banner_alert.js"></script>
+</head>
+<body onload="now_time()">
+	<div id = "header">
+		<div id = "area_header" class="area" style='height: 67px;'>
+			<div style="float: left;">
+				<h1><a href="/main">M-Tag 모니터링 시스템 v1.0</a></h1>
+			</div>
+			<div style="float: right;">
+				<a href="/help" target='_blank' style="float:left;line-height:70px;font-size: 17px; font-weight:700; text-decoration: none; color:white; margin-right:20px;">도움말</a>
+				<form method="POST" action="/login/logout" style="float:left">
+					<input type="submit" value="LOGOUT" class="log-out">
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="banner_box" class="none">
+		<span id="banner_text"></span>
+	</div>
+	<div id = "content">
+		<div id = "area_content" class="area">
+			<h1 id="title">Onboard monitoring</h1>
+			<div class="" style="margin-top:20px;margin-bottom:10px;overflow:hidden">
+				<div class="" style="overflow:hidden;float:left">
+					<div class="" style="float:left">
+						<button id="emergency_button" class="off" disabled><i class="far fa-bell"></i></button>
+					</div>
+					<div id="Count" style="float:left;margin-left:10px;">
+						<table id = "tagCount" style="height:100px; width:290px;">
+							<thead>
+								<tr>
+									<th>Boarder</th>
+									<th>Passenger</th>
+									<th>Cargo</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+				<div id="current_header" style="float:right">
+					<form>
+						<input type="hidden" value="1F" id="hidden_layer">
+						<input type="button" class="button" name="change" value="1F">
+						<input type="button" class="button" name="change" value="2F">
+						<input type="button" class="button" name="change" value="3F">
+						<input type="button" class="button" name="change" value="4F">
+					</form>
+				</div>
+			</div>
+			<div class="content_area" style="overflow:hidden">
+				<canvas id="canvas" width="800" height="500" style="width:800px; height:500px; border:1px; margin:0 0 10px 0;float:left"></canvas>
+				<div class="" style="float:right; max-width:367px;">
+					<h3 id="location_name" style="margin-bottom:10px">위치를 선택해주세요.</h3>
+					<table id="realtime_table" style="width:367px;">
+						<thead>
+							<tr>
+								<th style="width:48px;">Id</th>
+								<th style="width:48px;">Name</th>
+								<th style="width:48px;">Type</th>
+								<th style="width:79px;">Emergency</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="table-area">
+			</div>
+		</div>
+	</div>
+
+	<div id = "footer">
+	</div>
+</body>
+</html>
+
+<div id="EmergencyInfo-Form" title="위험 상황 Tag 정보" style="display:none">
+	<table id="EmergencyInfoTable">
+		<thead>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Location</th>
+			<th>Floor</th>
+		</thead>
+		<tbody></tbody>
+	</table>
+</div>
+
+<div id="EmergencyRelease-Form" title="응급 상황 해제" style="display:none">
+	<p id="Emergency_TagID"></p>
+	<span style="font-weight:450">태그에 대한 응급상황을</span>
+	<span style="font-weight:450">해제하시겠습니까?</span>
+</div>

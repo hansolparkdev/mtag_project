@@ -1,0 +1,124 @@
+<html>
+<head>
+	<title>Tag admin</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/dataTable.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/mtag_admin.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/banner_alert.css">
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css">
+	<script type="text/javascript" src="/static/js/lib/jquery.min.js"></script>
+	<!--<script type="text/javascript" src="/static/js/lib/jquery-1.12.4.js"></script>-->
+	<script type="text/javascript" src="/static/js/lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="/static/js/lib/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/static/js/scripts/mtag_admin.js"></script>
+	<script type="text/javascript" src="/static/js/scripts/banner_alert.js"></script>
+	<style media="screen">
+		#tagInfoTable_filter{
+			margin: 10px 0 10px 10px;
+		}
+	</style>
+</head>
+<body onload="now_time()">
+	<div id = "header">
+		<div id = "area_header" class="area" style='height: 67px;'>
+			<div style="float: left;">
+				<h1><a href="/main">M-Tag 모니터링 시스템 v1.0</a></h1>
+			</div>
+			<div style="float: right;">
+				<a href="/help" target='_blank' style="float:left;line-height:70px;font-size: 17px; font-weight:700; text-decoration: none; color:white; margin-right:20px;">도움말</a>
+				<form method="POST" action="/login/logout" style="float:left">
+					<input type="submit" value="LOGOUT" class="log-out">
+				</form>
+			</div>
+		</div>
+		<div id="banner_box" class="none">
+			<span id="banner_text"></span>
+		</div>
+	</div>
+
+	<div id = "content">
+		<div id = "area_content" class="area">
+			<h1>Tag Management</h1>
+			<div id="current_header">
+				<table id="time_table">
+					<thead>
+						<tr>
+							<td id="date"></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td id="time"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="table-area">
+				<table id = "tagInfoTable">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Type</th>
+							<th>Status</th>
+							<th>Modify</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<input type = "button" value="태그 추가" id = "add_btn" onClick="tagAdd()">
+			</div>
+		</div>
+	</div>
+	<div id = "footer">
+	</div>
+</body>
+</html>
+
+<div id="tagad-form" title = "태그 정보 추가" style="display:none">
+	<span>ID *</span><br/>
+	<input type="text" id="add_tag_id_txt" class="input_form"><br/>
+	<p class="placeholder">16진수 8자리 문자열을 입력해주세요.</p><br/>
+	<span>Name *</span><br/>
+	<input type="text" id="add_tag_name_txt" class="input_form"><br/>
+	<p class="placeholder">3~5자리 한글 문자열을 입력해주세요.</p><br/>
+	<span>Type</span><br/>
+	<select class="selectbox" id="add_tag_type">
+		<option selected>Boarder</option>
+		<option>Passenger</option>
+		<option>Cargo</option>
+	</select>
+</div>
+
+<div id ="update-form" title = "태그 정보 수정" style="display:none">
+	<p id = "update_tag_id_txt"  class = "modi_tag_id"></p><br/>
+	<span style="font-weight:700">Name *</span><br/>
+	<input type="text" id="update_tag_name_txt" class="input_form"><br/>
+	<p class="placeholder">3~5자리 한글 문자열을 입력해주세요.</p><br/>
+	<span style="font-weight:700">Type</span><br/>
+	<select class="selectbox" id="update_tag_type">
+		<option>Boarder</option>
+		<option>Passenger</option>
+		<option>Cargo</option>
+	</select><br/>
+</div>
+
+<div id="tag_delete-form" title="태그 삭제" style="display:none">
+	<p id="delete_tagid"></p>
+	<span style="font-weight:450">태그를 삭제하시겠습니까?</span>
+</div>
+
+<div id="status_tag_form" title="태그 현재 상태" style="display:none">
+	<br/><span class='title'>ID : </span>
+	<span id="status_tagid"></span><br/><br/>
+	<span class='title'>Name : </span>
+	<span id="status_tagname"></span><br/><br/>
+	<span class='title'>Last Lodation : </span>
+	<span id="status_tag_location"></span><br/><br/>
+	<span class='title'>Active State : </span>
+	<span id="status_tag_active"></span><br/><br/>
+	<span class='title'>Last Update Time : </span>
+	<span id="status_tag_updatetime"></span><br/><br/>
+</div>

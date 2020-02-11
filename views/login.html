@@ -1,0 +1,202 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>MTag Monitoring Login</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/banner_alert.css">
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css">
+	<script type="text/javascript" src="/static/js/lib/jquery-ui.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var status_value = "{{ status }}";
+			var fmsg = "{{ fmsg }}";
+
+			if(fmsg == ""){}
+			else if(fmsg == "비밀번호 변경 성공! 신규 비밀번호로 로그인해주세요."){
+				alert(fmsg)
+				window.location.href="/login/"
+			}else if(fmsg == "최초로 로그인 하셨습니다. 비밀번호를 재설정해주세요.") {
+				alert(fmsg)
+				changePwdForm()
+			}else {
+				alert(fmsg)
+			}
+			if(status_value == 0){
+				$(".changePwd").css({'display':"none"})
+			}else{
+				$(".changePwd").css({'display':"block"})
+				$("#statusField").val(status_value)
+				$("#id").prop("disabled", true)
+				$("#pwd").prop("disabled", true)
+				$("#login_submit").prop("disabled", true)
+			}
+		})
+
+		function changePwdForm(){
+			$("#changePwd-Form").dialog({
+				resizable : false,
+				height:"auto",
+				width:450,
+				modal:true
+			})
+		}
+		</script>
+</head>
+	<style>
+	@import url(//fonts.googleapis.com/earlyaccess/notosanskannada.css);
+	*{ margin: 0px; padding: 0px; }
+	#content{ width: 100%; background-color: #2d3e48; min-height: 100%; background: linear-gradient(rgb(24, 103, 192), rgb(92, 187, 246));}
+	#content_area{ width: 500px; margin: 0 auto; }
+	#title { text-align: center; margin-bottom: 105px; }
+	#idZone{ text-align: center; }
+	#pwdZone{ text-align: center; }
+	.idPwd{ width: 500px; height: 60px; margin-bottom: 10px;font-size: 25px;border-radius: 5px;border: 1px; }
+	#submit{ text-align: center; }
+	#login_submit{ background-color: #e15f5f; border: none; color: white; border-radius: 5px; cursor: pointer; }
+	#signUp{ color: white; float: left; font-size: 25px; }
+	#pwdLost{ color: white; float: right; font-size: 25px; }
+	a{ color: white; text-decoration:none; }
+	.placeholder{color: #787878; font-size: 25%; padding: 0; margin: 0;}
+	#change_password_btn{width: 500px; height: 60px; margin-bottom: 10px;font-size: 25px;border-radius: 5px;border: 1px;; color:white; background-Color:#e15f5f; cursor:pointer;}
+	</style>
+<body>
+	<div style="float:right">
+		<a href="/help" target="_blank">도움말 &nbsp;&nbsp;&nbsp;</a>
+	</div>
+	<div id="banner_box" class="none">
+		<span id="banner_text"></span>
+	</div>
+	<div id='content'>
+		<div id='content_area'>
+			<div style="padding-top: 280px;font-family: 'Noto Sans Kannada', sans-serif;">
+				<div id='login_zone'>
+					<div>
+						<p style="color: white; font-weight: 700; font-size: 38px; text-align: center; margin-bottom: 20px;">M-Tag 모니터링 시스템 v1.0</p><br/><br/>
+					</div>
+					<form method="post" action="/login/signin">
+						<div id='none' style='display: none'>
+							<p>Cannot login. Please check your username and password</p>
+						</div>
+						<div id='idZone'>
+							<input type="text" id='id' class='idPwd' name="userId" style='padding-left: 10px;'
+									placeholder="ID" pattern="[a-zA-Z0-9]{5,15}" 
+									title="아이디는 5~15자리의 특수문자 제외한 문자를 입력해주세요." required>
+						</div>
+						<div id='pwdZone'>
+							<input type="password" id='pwd' class='idPwd' name="password" style='padding-left: 10px;'
+									placeholder="Password">
+						</div>
+						<div id='submit'>
+							<button type="submit" id = "login_submit" class='idPwd' value="로그인">Log in</button>
+						</div>
+						<div class="changePwd" style="display:none">
+							<input type="button" id="change_password_btn" class='idPwd' value="Change Password" onClick="changePwdForm()" 
+									style="color:white; background-Color:#e15f5f;">
+						</div>
+					</form>	
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<div id="changePwd-Form" title="Change Password" style="display:none">
+	<form action="/login/changepwd" method="post" id="frm" name="changefrm">
+		<input type="password" name="temporary_code" id="temporary_code" placeholder="인증코드 입력" class="temporary_code"><br>
+		<p class="placeholder">사용자 설명서에 기재된 인증코드를 입력해주세요.</p><br/>
+		<input type="button" id = "temporary_code_check_btn" class="temporary_code_check_btn" onClick = "checkTemporaryCode()" value="인증"><br><br>
+		<input type="hidden" id="certification">
+		<p id="temporary_code_state"></p>
+		<br>
+		<input type="password" name="npwd" value="" id="new_pwd" placeholder="신규 비밀번호" class="change_pwd_input"><br>
+		<p class="placeholder">특수문자, 알파벳 소문자, 대문자, 숫자가 포함된 8~15자리 이내의 문자를 입력하세요.</p><br/>
+		<input type="password" name="cpwd" value="" id="confirm_pwd" placeholder="비밀번호 확인" class="change_pwd_input" required><br>
+		<p class="placeholder">특수문자, 알파벳 소문자, 대문자, 숫자가 포함된 8~15자리 이내의 문자를 입력하세요.</p><br/>
+		<input type="hidden" name="status" id="statusField">
+		<button type="button"  onClick="changePwdSubmit()" class="change_submit" style="font-size: 25px;">Change</button>
+	</form>
+	<script>		
+		/*
+		var regex = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+		*/
+		var regex_password = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$/
+		var init_password = "P@ssw0rd"
+
+		function changePwdSubmit() {
+			var temporary_code = $("#temporary_code").val();
+			var certification = $("#certification").val();
+			var new_pwd = $("#new_pwd").val();
+			var confirm_pwd = $("#confirm_pwd").val();
+			
+			if(temporary_code = ""){
+				alert("인증코드를 입력해주세요")
+			}else if(certification == 0){
+				alert("인증코드를 잘못 입력하셨거나 입력버튼을 눌러 인증을 받아주세요.")
+			}else if(new_pwd == ""){
+				alert("새 비밀번호를 입력해주세요");
+			}else if(confirm_pwd == ""){
+				alert("비밀번호를 확인해주세요");
+			}else if(init_password == new_pwd){
+				alert("신규 비밀번호는 초기 비밀번호와 같지 않아야 합니다.")
+			}else if(!vaild_Password(new_pwd)){
+				alert("비밀번호 문자열 양식을 맞춰주세요.");
+			}else if(!vaild_Password(confirm_pwd)){
+				alert("비밀번호 문자열 양식을 맞춰주세요.");
+			}else{
+				if(new_pwd !== confirm_pwd) {
+					alert("비밀번호가 일치하지않습니다.");
+				}else {
+					$("#frm").submit()
+				}
+			}
+		}
+		
+		function checkTemporaryCode(){
+			var temporary_code = $("#temporary_code").val();
+			data = {"temporary_code": temporary_code}
+			$.ajax({
+				url : '/login/check_temporary_code',
+				method : 'post',
+				contentType :"application/json",
+				data:JSON.stringify(data),
+				success: function(data){
+					if(data == false){
+						var text = "인증코드를 잘못입력하셨습니다."
+						$("#certification").val(0)
+						$("#temporary_code_state").html(text)
+					}else{
+						var text = "인증되었습니다."
+						$("#certification").val(1)
+						$("#temporary_code_state").html(text)	
+					}
+				}
+			})
+		}
+
+		function vaild_Password(password) {
+			var password_verification = password.match(regex_password);
+			if(password_verification != password || password_verification == null) {
+				return false;
+			}
+			return true;
+		}
+	</script>
+	<style>
+	.temporary_code_check_btn, .temporary_code, .change_pwd_input{
+		width:100%;
+		height:50px;
+		padding-left: 10px;
+		border-radius: 10px;
+		border:1px solid #BDBDBD;
+	}
+	.change_submit{
+		width:100%;
+		height:50px;
+		padding-left: 10px;
+		border-radius: 10px;
+		border:1px solid gray;
+		text-align: center;
+		cursor:pointer;
+	}
+	</style>
+</div>

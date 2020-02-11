@@ -1,0 +1,422 @@
+<html>
+    <head>
+	<title>도움말</title>
+        <meta charset="utf8">
+    <script type="text/javascript" src = "/static/js/lib/jquery.min.js"></script>
+    </head>
+    <body>
+        <div style="width:800px;margin: 0 auto;">
+            <br>
+            <div id="tab">
+                <ul>
+                    <a onClick="viewMenual(1)"><li>로그인</li></a>
+                    <a onClick="viewMenual(2)"><li>메인</li></a>
+                    <a onClick="viewMenual(3)"><li>모니터링</li></a>
+                    <a onClick="viewMenual(4)"><li>Tag 관리</li></a>
+                    <a onClick="viewMenual(5)"><li>Beacon 관리</li></a>
+                    <a onClick="viewMenual(6)"><li>Tag 사용방법</li></a>
+                    <a onClick="viewMenual(7)"><li>gateway 사용방법</li></a>
+                </ul>
+            </div>
+            <script type="text/javascript">
+                $(function(){
+                    viewMenual(1)
+                })
+                function viewMenual(a){
+                    if(a == 1){
+                        $("#loginpage").css({"display":"block"});
+                        $("#mainpage").css({"display":"none"});
+                        $("#monitoringpage").css({"display":"none"});
+                        $("#tagpage").css({"display":"none"});
+                        $("#beaconpage").css({"display":"none"});
+                        $("#Tag").css({"display":"none"});
+                        $("#Gateway").css({"display":"none"});
+                    }
+                    if(a == 2){
+                        $("#loginpage").css({"display":"none"});
+                        $("#mainpage").css({"display":"block"});
+                        $("#monitoringpage").css({"display":"none"});
+                        $("#tagpage").css({"display":"none"});
+                        $("#beaconpage").css({"display":"none"});
+                        $("#Tag").css({"display":"none"});
+                        $("#Gateway").css({"display":"none"});
+                    }
+                    if(a == 3){
+                        $("#loginpage").css({"display":"none"});
+                        $("#mainpage").css({"display":"none"});
+                        $("#monitoringpage").css({"display":"block"});
+                        $("#tagpage").css({"display":"none"});
+                        $("#beaconpage").css({"display":"none"});
+                        $("#Tag").css({"display":"none"});
+                        $("#Gateway").css({"display":"none"});
+                    }
+                    if(a == 4){
+                        $("#loginpage").css({"display":"none"});
+                        $("#mainpage").css({"display":"none"});
+                        $("#monitoringpage").css({"display":"none"});
+                        $("#tagpage").css({"display":"block"});
+                        $("#beaconpage").css({"display":"none"});
+                        $("#Tag").css({"display":"none"});
+                        $("#Gateway").css({"display":"none"});
+                    }
+                    if(a == 5){
+                        $("#loginpage").css({"display":"none"});
+                        $("#mainpage").css({"display":"none"});
+                        $("#monitoringpage").css({"display":"none"});
+                        $("#tagpage").css({"display":"none"});
+                        $("#beaconpage").css({"display":"block"});
+                        $("#Tag").css({"display":"none"});
+                        $("#Gateway").css({"display":"none"});
+                    }
+                    if(a == 6){
+                        $("#loginpage").css({"display":"none"});
+                        $("#mainpage").css({"display":"none"});
+                        $("#monitoringpage").css({"display":"none"});
+                        $("#tagpage").css({"display":"none"});
+                        $("#beaconpage").css({"display":"none"});
+                        $("#Tag").css({"display":"block"});
+                        $("#Gateway").css({"display":"none"});
+                    }
+                    if(a == 7){
+                        $("#loginpage").css({"display":"none"});
+                        $("#mainpage").css({"display":"none"});
+                        $("#monitoringpage").css({"display":"none"});
+                        $("#tagpage").css({"display":"none"});
+                        $("#beaconpage").css({"display":"none"});
+                        $("#Tag").css({"display":"none"});
+                        $("#Gateway").css({"display":"block"});
+                    }
+
+                }
+            </script>
+            <style type="text/css">
+            *{
+                padding:0;
+                margin:0;
+            }
+            #tab ul li{
+                display:inline-block;
+                list-style: none;
+                width: 109px;
+                font-size: 12px;
+                text-align: center;
+                height:50px;
+                line-height: 50px;
+                background-color: #BDBDBD;
+            }
+            #tab ul a li:hover{
+                background-color: gray;
+                cursor:pointer;
+            }
+            #tab ul a li {
+                color:white;
+            }
+        </style>
+<div id="loginpage" style="width:100%">
+<pre>
+
+■ 로그인 페이지
+
+1) 초기 비밀번호 변경
+
+<img src="/static/img/lo1.png" alt="" class="capture_img">
+
+- 아이디는 admin으로 고정
+- 사용자 메뉴얼에 명시된 초기 비밀번호 입력
+- 초기 비밀번호로 접속시 비밀번호 설정 팝업 출력
+
+<img src="/static/img/lo2.png" alt="" class="capture_img">
+
+- 인증번호 입력 후 인증 버튼을 통해 인증
+- 인증번호는 사용자 메뉴얼을 통해서 제공됨
+- 인증 확인 후 비밀번호 변경 가능
+
+<img src="/static/img/lo3.png" alt="" class="capture_img">
+
+- 비밀번호 변경 성공 메시지 출력
+
+2) 로그인
+
+<img src="/static/img/lo4.png" alt="" class="capture_img">
+
+- 아이디 : admin
+- 비밀번호는 변경한 비밀번호 입력 후 로그인
+
+3) 사용자 정보가 다를 경우 처리
+
+<img src="/static/img/lo5.png" alt="" class="capture_img">
+
+- 사용자 정보를 5회 이상 다를 경우 사용자 정보 초기화
+
+<img src="/static/img/lo6.png" alt="" class="capture_img">
+
+- 사용자 정보를 5회 이상 다를 경우 사용자 정보 초기화
+
+<img src="/static/img/lo7.png" alt="" class="capture_img">
+
+- ID, Password 입력창 비활성화 및 로그인 잠김
+- 비밀번호 변경을 통해 비밀번호 변경
+- 비밀번호 변경 후 로그인 창 활성화
+
+<img src="/static/img/lo8.png" alt="" class="capture_img">
+
+- 인증번호 입력 후 인증 버튼을 통해 인증
+- 인증번호는 사용자 메뉴얼을 통해서 제공됨
+- 인증 확인 후 비밀번호 변경 가능
+
+<img src="/static/img/lo9.png" alt="" class="capture_img">
+
+- 비밀번호 변경 성공 메시지 출력
+
+
+</pre>
+</div>
+<div id="mainpage" style="width:100%">
+<pre>
+
+■ 메인페이지
+
+<img src="/static/img/main1.png" alt="" class="capture_img">
+
+- #Onboard monitoring을 클릭을 통해 Monitoring 페이지 접속
+- #Tag Management 클릭을 통해 Tag 관리 페이지 접속
+- #Beacon Management 클릭을 통해 Beacon 관리 페이지 접속
+
+</pre>
+</div>
+<div id="monitoringpage" style="width:100%">
+<pre>
+
+■ 모니터링 페이지
+
+- Tag 데이터가 20초간 들어오지 않을 경우 Tag의 위치 표시는 사라짐
+- 응급상황은 예외로 20초간 Tag 데이터가 들어오지 않아도 위치 표시
+  (관리자가 종모양 버튼을 클릭하여 직접 꺼줘야 함)
+
+1) 모니터링 페이지 첫 화면
+
+<img src="/static/img/m1.png" alt="" class="capture_img">
+
+2) 위치 내 태그 정보 확인
+
+ <img src="/static/img/m2.png" alt="" class="capture_img">
+
+- 맵 내 마커 클릭 시 우측에 해당 위치 태그 정보 출력
+
+3) 응급상황 처리
+
+<img src="/static/img/m3.png" alt="" class="capture_img">
+
+- 응급 상황 발생 시 좌 상단의 응급 버튼 점멸
+
+<img src="/static/img/m4.png" alt="" class="capture_img">
+
+- 응급 버튼 클릭 시 현재 응급 상황인 태그 정보 표시
+
+<img src="/static/img/m5.png" alt="" class="capture_img">
+
+- 응급 해제할 대상 행 클릭 후 확인 창을 통해 응급 상황 해제 가능
+
+4) 층 이동
+
+<img src="/static/img/m6.png" alt="" class="capture_img">
+
+- 우 상단에 표시되는 층 버튼을 이용해 층 이동 가능
+</pre>
+</div>
+<div id="tagpage"  style="width:100%">
+<pre>
+
+■ Tag 관리 페이지
+
+1) Tag 관리 페이지 첫 화면
+
+<img src="/static/img/ta1.png" alt=""  class="capture_img">
+
+2) Tag 추가
+
+<img src="/static/img/ta2.png" alt=""  class="capture_img">
+
+- Tag 추가 버튼 클릭 시 팝업창 출력
+
+<img src="/static/img/ta3.png" alt=""  class="capture_img">
+
+- TagID, Name, Type 입력 후 추가 버튼 클릭
+
+<img src="/static/img/ta4.png" alt=""  class="capture_img">
+
+- 알림 창을 통해 성공 메시지 출력
+- 확인 버튼 클릭시 화면 갱신을 통해 Tag 추가 확인 가능
+
+3) Tag 수정
+<img src="/static/img/ta5.png" alt=""  class="capture_img">
+
+- 수정할 행의 수정 버튼 클릭 시 팝업창 출력
+- 이름, Type 수정 가능
+- 수정 버튼을 통해 수정 가능
+
+<img src="/static/img/ta6.png" alt=""  class="capture_img">
+
+- 알림 창을 통해 수정 성공 메시지 확인
+- 확인 버튼 클릭 시 화면 갱신을 통해 Tag 수정 확인 가능
+
+4) Tag 삭제
+
+<img src="/static/img/ta7.png" alt=""  class="capture_img">
+
+- 삭제할 행의 삭제 버튼 클릭 시 팝업창 출력
+- 삭제버튼 클릭 시 삭제 가능
+
+<img src="/static/img/ta8.png" alt=""  class="capture_img">
+
+- 알림 창을 통해 삭제 성공 메시지 확인
+- 확인 버튼 클릭 시 화면 갱신을 통해 Tag 삭제 확인 가능
+
+5) Tag 상태 확인
+
+<img src="/static/img/ta9.png" alt=""  class="capture_img">
+
+- 상태를 확인할 Tag 행의 상태확인 버튼 클릭
+
+<img src="/static/img/ta10.png" alt=""  class="capture_img">
+
+- 해당 Tag의 정보 확인 가능
+
+6) 검색 기능
+
+<img src="/static/img/ta11.png" alt=""  class="capture_img">
+
+- 우측 상단 검색창을 통해 ID, Name, Type으로 검색 가능
+
+</pre>
+</div>
+<div id="beaconpage" style="width:100%">
+<pre>
+
+■ Beacon 관리 페이지
+
+1) Beacon 관리 페이지 첫 화면
+
+<img src="/static/img/be1.png" alt=""  class="capture_img">
+
+2) Beacon 추가
+
+<img src="/static/img/be2.png" alt=""  class="capture_img">
+
+- 비콘 추가 버튼 클릭 시 팝업창 출력
+
+<img src="/static/img/be3.png" alt=""  class="capture_img">
+
+- Beacon ID 입력
+- 배치할 층 선택
+- 추가 버튼 클릭 시 추가 가능
+
+<img src="/static/img/be4.png" alt=""  class="capture_img">
+
+- 알림 창을 통해 추가 성공 메시지 확인
+- 확인 버튼 클릭 시 화면 갱신을 통해 Beacon 추가 확인 가능
+
+3) Beacon 수정
+
+<img src="/static/img/be5.png" alt=""  class="capture_img">
+
+- 수정할 행의 수정 버튼 클릭 시 팝업창 출력
+
+<img src="/static/img/be6.png" alt=""  class="capture_img">
+
+- location 입력
+- installed 상태 선택
+  - 비콘의 설치 상태를 표시
+  - 해당 위치에 비콘 설치 이후 관리자가 직접 installed 설치로 변경
+  - 미설치 상태일 경우 모니터링 페이지에서 미표시
+- 수정버튼을 통해 수정 가능
+
+<img src="/static/img/be7.png" alt=""  class="capture_img">
+
+- 알림 창을 통해 수정 성공 메시지 확인
+- 확인 버튼 클릭 시 화면 갱신
+
+<img src="/static/img/be8.png" alt=""  class="capture_img">
+
+- Beacon 수정 확인 가능
+
+4) Beacon 위치 지정
+
+<img src="/static/img/be9.png" alt=""  class="capture_img">
+
+- 맵 내 이동할 Beacon 드래그
+- 드래그 도중 해당 영역을 벗어날 경우 원래 위치로 초기화
+- 드래그 후 확인 창을 통해 적용 여부 확인
+- 확인 시 해당 위치 저장
+
+<img src="/static/img/be10.png" alt=""  class="capture_img">
+
+- 알림 창을 통해 위치 적용 성공 메시지 확인
+
+<img src="/static/img/be11.png" alt=""  class="capture_img">
+
+- 드래그시 맵을 벗어나게 될 경우 경고창 출력
+
+5) Beacon 삭제
+
+<img src="/static/img/be11.png" alt=""  class="capture_img">
+<img src="/static/img/be12.png" alt=""  class="capture_img">
+
+- 삭제할 행의 삭제 버튼 클릭 시 팝업창 출력
+- 삭제버튼 클릭 시 삭제 가능
+
+<img src="/static/img/be13.png" alt=""  class="capture_img">
+
+- 확인 버튼 클릭 시 화면 갱신
+
+<img src="/static/img/be14.png" alt=""  class="capture_img">
+
+- 맵과 테이블에서 마커 삭제 확인 가능
+
+</pre>
+</div>
+<div id ="Tag">
+<pre>
+
+■ Tag 사용 방법
+
+- 태그 LoRa 전송 주기는 10초 간격
+- 응급 버튼을 눌렀을 경우 다음 LoRa 전송 때 응급신호를 보냄
+
+<img src="/static/img/tag.png" alt=""  class="capture_img">
+
+
+
+</pre>
+</div>
+<div id ="Gateway">
+<pre>
+
+■ Gateway 사용 방법
+
+<img src="/static/img/ga1.png" alt=""  class="capture_img">
+
+1) 게이트웨이 후면 검은원에 5V 파워 어댑터를 연결한다.
+2) 파란원에는 이더넷 케이블을 연결해준다.
+3) 빨간원의 스위치를 ON으로 맞춘다.
+
+<img src="/static/img/ga2.png" alt=""  class="capture_img">
+
+4) 전면부의 스위치(검은원)를 누르면 게이트웨이가 실행된다.
+
+</pre>
+</div>
+        </div>
+        <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .capture_img{
+            width:800px;
+            height:400px;
+            border:1px solid black;
+        }
+        </style>
+    </body>
+</html>

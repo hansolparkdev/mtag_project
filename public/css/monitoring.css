@@ -1,0 +1,47 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+*{margin: 0;padding: 0;font-family: 'Noto Sans KR', sans-serif}
+.area{width: 1200px;margin: 0 auto}
+#content{padding-top: 77px}
+#footer{background-color: #BDBDBD}
+.log-out{border: none; background-color: skyblue; font-size: 17px; font-weight: 700; color: white; line-height: 67px; cursor: pointer}
+.button{height:100px;width:60px;text-align: center;font-size: 15px;color: black;border-radius: 12px}
+#emergency_button{width: 100px; height:100px;color: black;font-size: 25px;padding: 14px;border-radius: 12px; float: left}
+#emergency_button.off{background-color: white}
+#emergency_button.on{background-color: red;animation-name: button_blink;animation-duration: 0.2s;animation-direction: alternate-reverse;animation-iteration-count: infinite}
+@keyframes button_blink{from {background-color:red;}to {background-color:white;}}
+#current_header{float: right}
+.content_area{width: 1200px; margin: 0 auto; margin-top: 20px}
+#time_table{border: 3px solid skyblue;border-radius: 15px;width: 207px; margin-bottom: 5px}
+#Count{float: left}
+#MtagInfo-form{height:600px;}
+h1{padding:10px 0 10px 0}
+h1 a{text-decoration: none;color:white}
+table th{font-size: 13px;border:1px;border-collapse: collapse;text-align: center;color:black}
+table td{height:40px;width:80px;padding:2 !important; border:1px;border-collapse: collapse;text-align: center;font-weight: 400;font-size: 13px; }
+p{margin-top: 20px;margin-bottom: 5px;font-size: 28px;font-weight: 700}
+p a{color:black;text-decoration: none}
+p a:hover{color:blue}
+.input_form{margin:5px 0 5px 0;padding:5px;width:350px;border-radius: 5px;border:1px solid #BDBDBD}
+#notice{background-color: skyblue;color: white;padding: 10px;margin: 0;text-align: center;border: 1px;border-color: skyblue;border-radius: 3px;float: right;margin: 10px 0 10px 0}
+#notice:hover{box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 12px 40px 0 rgba(0,0,0,0.19)}
+#notice:active{opacity: 0.7}
+#realtime_table{
+  border-collapse: collapse;
+  width:367px;
+}
+#realtime_table th{
+  height:40px;
+  background-color: white !important;
+  color:black;
+  /* width:93px; */
+  border-bottom:1px solid black;
+}
+#realtime_table tbody{
+  border-bottom:1px solid black;
+}
+#realtime_table .even-row{
+  background-color: #ECECEC;
+}
+#realtime_table .even-row, #realtime_table .odd-row {
+  cursor:pointer;
+}

@@ -1,0 +1,55 @@
+#header{
+	background-color: skyblue;
+	color:white;
+	position: absolute;
+	z-index: 90;
+	width: 100%;
+	top: 0px;
+}
+#banner_box{
+	position: absolute;
+	width: 25%;
+	height: 40px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+	z-index: 100;
+	top: -40px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	text-align: center;
+}
+#banner_text{
+	width: 100%;
+	color: white;
+	font-size: 17px;
+}
+#banner_box.none{
+	background-color: #000000;
+}
+#banner_box.success{
+	background-color: #41FF3A;
+}
+#banner_box.fail{
+	background-color: #FF3636;
+}
+#banner_box.on{
+	animation-name: banner_on;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+#banner_box.off{
+	animation-name: banner_off;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+@keyframes banner_on{
+	from {top: -40px;}
+	to {top: 0px;}
+}
+@keyframes banner_off{
+	from {top: 0px;}
+	to {top: -40px;}
+}

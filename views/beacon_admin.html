@@ -1,0 +1,91 @@
+<html>
+<head>
+	<title>Beacon admin</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/dataTable.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/beacon_admin.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/banner_alert.css">
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css">
+	<!--<script type="text/javascript" src="/static/js/lib/jquery-1.12.4.js"></script>-->
+	<script type="text/javascript" src="/static/js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="/static/js/lib/jcanvas.min.js"></script>
+	<script type="text/javascript" src="/static/js/lib/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/static/js/scripts/beacon_admin.js"></script>
+	<script type="text/javascript" src="/static/js/scripts/banner_alert.js"></script>
+</head>
+
+<body>
+	<div id = "header">
+		<div id = "area_header" class="area" style='height: 67px;'>
+			<div style="float: left;">
+				<h1><a href="/main">M-Tag 모니터링 시스템 v1.0</a></h1>
+			</div>
+			<div style="float: right;">
+				<a href="/help" target='_blank' style="float:left;line-height:70px;font-size: 17px; font-weight:700; text-decoration: none; color:white; margin-right:20px;">도움말</a>
+				<form method="POST" action="/login/logout" style="float:left">
+					<input type="submit" value="LOGOUT" class="log-out" >
+				</form>
+			</div>
+			<div id="banner_box" class="none">
+				<span id="banner_text"></span>
+			</div>
+		</div>
+	</div>
+	<div id = "content">
+		<div id = "area_content" class="area">
+			<h1>Beacon Management</h1>
+			<div style="height: 30px; margin: 10px 0 10px 0; padding-bottom: 10px">
+				<select id = "select_layer"></select>
+			</div>
+			<div class="table-area">
+				<canvas id = "canvas" width="800" height="500" style="width:800px;height:500px; margin:10px 0 20px 0;border:1px solid black;"></canvas>
+			</div>
+			<div class="table-area">
+				<input type = "hidden" value="" id = "init_beacon_x">
+				<input type = "hidden" value="" id = "init_beacon_y">
+				<input type = "hidden" value="" id = "beacon_x">
+				<input type = "hidden" value="" id = "beacon_y">
+				<table id = "beaconInfoTable">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Location</th>
+							<th>Installed</th>
+							<th>Modify</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<input type = "button" value="비콘 추가" id = "add_btn" onClick="addBeacon()">
+			</div>
+		</div>
+	</div>
+	<div id = "footer">
+	</div>
+</body>
+</html>
+<div id = "add-form" title="비콘 추가" style="display:none">
+	<span>Beacon ID *</span><br>
+	<input type="text" id="add_beacon_id_txt" class="input_form"><br/>
+	<p class="placeholder">16진수 8자리 문자열을 입력해주세요.</p><br/>
+	<span>Layer</span><br>
+	<select id="add_select_layer" disabled></select>
+</div>
+<div id = "update-form" title="비콘 정보 수정" style = "display:none">
+	<p id ="update_beacon_id_txt" class="beacon_id_text"></p><br/>
+	<span style="font-weight:700">Location *</span><br/>
+	<input type = "text" id ="update_beacon_location_txt" class="input_form"><br/>
+	<p class="placeholder">1~15자리 문자열을 입력해주세요.</p><br/>
+	<span style="font-weight:700">Install</span><br/>
+	<div class="radiobox">
+		<label><input type="radio" id="installed" name="install" value="1">설치</label>
+		<label><input type="radio" id="non_installed" name="install" value="0">미설치</label><br/>
+	</div>
+</div>
+<div id="delete-form" title="비콘 삭제" style="display:none">
+	<!-- Dialog 삭제, 취소버튼 추가 -->
+	<p id="delete_beacon_id" class="beacon_id_text"></p><br/>
+	<span style="font-weight:450">비콘을 삭제하시겠습니까?</span>
+</div>

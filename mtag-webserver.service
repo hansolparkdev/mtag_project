@@ -1,0 +1,12 @@
+[Unit]
+Description=Mtag Webserver
+
+[Service]
+PIDFile=/var/fsrnt/mtag-webserver.pid
+WorkingDirectory=/var/fsrnt/MtagWebServer
+ExecStart=/var/fsrnt/MtagWebServer/mtag_webserver.sh
+Type=simple
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
